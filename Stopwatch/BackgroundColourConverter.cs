@@ -12,7 +12,7 @@ namespace Stopwatch
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             long val = (long)value;
-            return (val > 3000) ? "Bisque" : "ForestGreen";
+            return (val > 3000) ? "ForestGreen" : "Bisque";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

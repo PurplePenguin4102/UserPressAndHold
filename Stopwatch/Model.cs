@@ -11,14 +11,18 @@ namespace StopwatchUI
 {
     public class Model : INotifyPropertyChanged
     {
-        public long ShownTime
-        {
-            get => stopwatch.ElapsedMilliseconds;
-        }
+        private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
 
-        public Model() => LatestStopwatch();
+        public Model() => LatestStopwatchValue();
 
-        private async void LatestStopwatch()
+        public long ShownTime { get => stopwatch.ElapsedMilliseconds; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void StartTimer() => stopwatch.Start();
+        public void StopTimer() => stopwatch.Stop();
+        public void ResetTimer() => stopwatch.Reset();
+
+        private async void LatestStopwatchValue()
         {
             while (true)
             {
@@ -32,25 +36,6 @@ namespace StopwatchUI
         private void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-
-        private System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void StartTimer()
-        {
-            stopwatch.Start();
-        }
-
-        public void StopTimer()
-        {
-            stopwatch.Stop();
-        }
-
-        public void ResetTimer()
-        {
-            stopwatch.Reset();
         }
     }
 }
