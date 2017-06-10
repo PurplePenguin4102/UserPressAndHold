@@ -10,6 +10,7 @@
 
     <Page.Resources>
         <Stopwatch:BackgroundColourConverter x:Key="BackgroundColourConverter"/>
+        <Stopwatch:VisibilityConverter x:Key="VisibilityConverter"/>
     </Page.Resources>
 
     <Page.DataContext>
@@ -45,7 +46,8 @@
             PointerReleased="Stop_Click" 
             PointerExited="Reset_Click"
             />
+        
         <TextBlock Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="Instructions : Press and hold box to make it change colour. Exit box to reset timer. See box react to above timer after 3s." VerticalAlignment="Top"/>
-
+        <TextBlock Grid.Column="3" HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="Surprise!!" VerticalAlignment="Center" Visibility="{Binding ShownTime, Converter={StaticResource VisibilityConverter}, Mode=TwoWay}" Margin="0,70,0,0"/>
     </Grid>
 </Page>

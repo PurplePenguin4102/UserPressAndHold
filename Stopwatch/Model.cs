@@ -18,7 +18,7 @@ namespace StopwatchUI
         public long ShownTime { get => stopwatch.ElapsedMilliseconds; }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void StartTimer() => stopwatch.Start();
+        public void StartTimer() => stopwatch.Restart();
         public void StopTimer() => stopwatch.Stop();
         public void ResetTimer() => stopwatch.Reset();
 
